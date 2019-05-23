@@ -1,0 +1,21 @@
+# mingw32-make -f makefile_mingw
+GCC = gcc
+RM = del
+OBJECTS = main.o fuzzy_operations.o
+FLAGS = -Wall -O3
+PROJ_NAME = inz.exe
+
+all: $(OBJECTS)
+	$(GCC) $(OBJECTS) -lm  $(FLAGS) -o $(PROJ_NAME)
+
+main.o: main.c
+	$(GCC) main.c -c $(FLAGS)
+
+fuzzy_operations.o: fuzzy_operations.c
+	$(GCC) fuzzy_operations.c -c $(FLAGS)
+
+
+
+clean: 
+	$(RM) *.o
+	$(RM) $(PROJ_NAME)
